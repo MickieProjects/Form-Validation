@@ -7,6 +7,12 @@ const Form = () => {
     const [password, setPassword] = useState('')
     const [confirmpassword, setConfirmPassword] = useState('')
 
+    //  Error Message Management
+    const [errorUserName, setErrorUsername] = useState('กรุณาป้อนชื่อผู้ใช้')
+    const [errorEmail, setErrorEmail] = useState('รูปแบบอีเมบไม่ถูกต้อง')
+    const [errorPassword, setErrorPassword] = useState('รหัสผ่านต้องมีจำนวณ 6 ตัวอักษร')
+    const [errorConfirmPassword, setErrorConfirmPassword] = useState('รหัสผ่านไม่ถูกต้อง')
+
     return (
         <div className=' h-[100vh] flex  '>
             <form className=' p-7 w-[500px] shadow-2xl mx-auto my-auto rounded-md '>
@@ -20,7 +26,7 @@ const Form = () => {
                         onChange={(e) => setUserName(e.target.value)}
                         className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
                     />
-                    <small>error messgae</small>
+                    <small>{errorUserName}</small>
                 </div>
                 {/* Email */}
                 <div className="form-control mb-3 p-2">
@@ -31,7 +37,7 @@ const Form = () => {
                         onChange={(e) => setEmail(e.target.value)} 
                         className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
                     />
-                    <small>error messgae</small>
+                    <small>{errorEmail}</small>
                 </div>
                 {/* Password */}
                 <div className="form-control mb-3 p-2">
@@ -42,7 +48,7 @@ const Form = () => {
                         onChange={(e) => setPassword(e.target.value)} 
                         className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
                     />
-                    <small>error messgae</small>
+                    <small>{errorPassword}</small>
                 </div>
                 {/* Confirm Password */}
                 <div className="form-control mb-10 p-2">
@@ -53,7 +59,7 @@ const Form = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)} 
                         className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
                     />
-                    <small>error messgae</small>
+                    <small>{errorConfirmPassword}</small>
                 </div>
                 {/* Button */}
                 <button type="submit" className=' w-full  bg-violet-600 text-white py-2 px-6 rounded-md text-lg'>ลงทะเบียน</button>
