@@ -8,14 +8,58 @@ const Form = () => {
     const [confirmpassword, setConfirmPassword] = useState('')
 
     //  Error Message Management
-    const [errorUserName, setErrorUsername] = useState('กรุณาป้อนชื่อผู้ใช้')
-    const [errorEmail, setErrorEmail] = useState('รูปแบบอีเมบไม่ถูกต้อง')
-    const [errorPassword, setErrorPassword] = useState('รหัสผ่านต้องมีจำนวณ 6 ตัวอักษร')
-    const [errorConfirmPassword, setErrorConfirmPassword] = useState('รหัสผ่านไม่ถูกต้อง')
+    const [errorUserName, setErrorUsername] = useState('')
+    const [errorEmail, setErrorEmail] = useState('')
+    const [errorPassword, setErrorPassword] = useState('')
+    const [errorConfirmPassword, setErrorConfirmPassword] = useState('')
+
+    // setColor Input
+    const [userNameColor, setUserNameColor] = useState('')
+    const [emailColor, setEmailColor] = useState('')
+    const [passwordColor, setPasswordColor] = useState('')
+    const [confirmPasswordColor, setConfirmPasswordColor] = useState('')
+
+    // Form Validate
+    const validateForm = (e) => {
+        e.preventDefault()
+        
+        // Check Username 
+        if (userName.length > 8) {
+            setErrorUsername('')
+            setUserNameColor('green')
+        }else {
+            setErrorUsername('ชื่อผู้ใช้น้อยกว่า 8 ตัวอักษร')
+            setUserNameColor('red')
+        }
+        // Check Email
+        if (email.includes("@")) {
+            setErrorEmail('')
+            setEmailColor('green')
+        }else {
+            setErrorEmail('รูปแบบอีเมลไม่ถูกต้อง')
+            setEmailColor('red')
+        }
+        // Check Password
+        if (password.length > 8) {
+            setErrorPassword('')
+            setPasswordColor('green')
+        }else {
+            setErrorPassword('รหัสผ่านน้อยกว่า 8 ตัวอักษร')
+            setPasswordColor('red')
+        }
+        // Check Confirm Password
+        if (confirmpassword != '' && confirmpassword === password) {
+            setErrorConfirmPassword('')
+            setConfirmPasswordColor('green')
+        }else {
+            setErrorConfirmPassword('รหัสผ่านไม่ตรงกัน')
+            setConfirmPasswordColor('red')
+        }
+    }
 
     return (
         <div className=' h-[100vh] flex  '>
-            <form className=' p-7 w-[500px] shadow-2xl mx-auto my-auto rounded-md '>
+            <form onSubmit={validateForm} className=' p-7 w-[500px] shadow-2xl mx-auto my-auto rounded-md '>
                 <h1 className=' text-center text-[30px] mb-5'>แบบฟอร์มลงทะเบียน</h1>
                 {/* Username */}
                 <div className="form-control mb-3 p-2">
@@ -24,7 +68,8 @@ const Form = () => {
                         type="text"
                         value={userName} 
                         onChange={(e) => setUserName(e.target.value)}
-                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 outline-none ' 
+                        style={{borderColor:userNameColor}}
                     />
                     <small>{errorUserName}</small>
                 </div>
@@ -35,7 +80,8 @@ const Form = () => {
                         type="text" 
                         value={email} 
                         onChange={(e) => setEmail(e.target.value)} 
-                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 outline-none ' 
+                        style={{borderColor:emailColor}}
                     />
                     <small>{errorEmail}</small>
                 </div>
@@ -43,10 +89,11 @@ const Form = () => {
                 <div className="form-control mb-3 p-2">
                     <label className=' block mb-2 text-[16px] font-medium '>รหัสผ่าน</label>
                     <input 
-                        type="text" 
+                        type="password" 
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 
-                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 outline-none ' 
+                        style={{borderColor:passwordColor}}
                     />
                     <small>{errorPassword}</small>
                 </div>
@@ -54,10 +101,11 @@ const Form = () => {
                 <div className="form-control mb-10 p-2">
                     <label className=' block mb-2 text-[16px] font-medium '>ยืนยันรหัสผ่าน</label>
                     <input 
-                        type="text" 
+                        type="password" 
                         value={confirmpassword} 
                         onChange={(e) => setConfirmPassword(e.target.value)} 
-                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 outline-none ' 
+                        style={{borderColor:confirmPasswordColor}}
                     />
                     <small>{errorConfirmPassword}</small>
                 </div>
