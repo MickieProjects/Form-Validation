@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
+
+    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmpassword, setConfirmPassword] = useState('')
 
     return (
         <div className=' h-[100vh] flex  '>
@@ -9,25 +14,45 @@ const Form = () => {
                 {/* Username */}
                 <div className="form-control mb-3 p-2">
                     <label className=' block mb-2 text-[16px] font-medium '>ชื่อผู้ใช้</label>
-                    <input type="text" className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' />
+                    <input 
+                        type="text"
+                        value={userName} 
+                        onChange={(e) => setUserName(e.target.value)}
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                    />
                     <small>error messgae</small>
                 </div>
                 {/* Email */}
                 <div className="form-control mb-3 p-2">
                     <label className=' block mb-2 text-[16px] font-medium '>อีเมล</label>
-                    <input type="text" className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' />
+                    <input 
+                        type="text" 
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                    />
                     <small>error messgae</small>
                 </div>
                 {/* Password */}
                 <div className="form-control mb-3 p-2">
                     <label className=' block mb-2 text-[16px] font-medium '>รหัสผ่าน</label>
-                    <input type="text" className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' />
+                    <input 
+                        type="text" 
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                    />
                     <small>error messgae</small>
                 </div>
                 {/* Confirm Password */}
                 <div className="form-control mb-10 p-2">
                     <label className=' block mb-2 text-[16px] font-medium '>ยืนยันรหัสผ่าน</label>
-                    <input type="text" className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' />
+                    <input 
+                        type="text" 
+                        value={confirmpassword} 
+                        onChange={(e) => setConfirmPassword(e.target.value)} 
+                        className=' block rounded-sm border-solid border-2 border-inherit w-full p-1 ' 
+                    />
                     <small>error messgae</small>
                 </div>
                 {/* Button */}
