@@ -58,8 +58,8 @@ const Form = () => {
     }
 
     return (
-        <div className=' h-[100vh] flex  '>
-            <form onSubmit={validateForm} className=' p-7 w-[500px] shadow-2xl mx-auto my-auto rounded-md '>
+        <div className=' h-[100vh] flex bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 '>
+            <form onSubmit={validateForm} className=' p-7 w-[500px] shadow-2xl mx-auto my-auto rounded-md bg-white '>
                 <h1 className=' text-center text-[30px] mb-5'>แบบฟอร์มลงทะเบียน</h1>
                 {/* Username */}
                 <div className="form-control mb-3 p-2">
